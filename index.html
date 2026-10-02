@@ -524,8 +524,14 @@
     }
 
     @media (max-width: 960px) {
-      .project { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 40px; }
-      .shots { position: static; }
+      /* 좁은 화면: 제목 → 스크린샷 → 설명 순서로 배치 */
+      .project { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 40px; }
+      .project-body { display: contents; }
+      .project-body > * { order: 2; }
+      .project-body > .project-label,
+      .project-body > h3,
+      .project-body > .project-summary { order: 0; }
+      .shots { position: static; order: 1; margin: 28px 0 8px; }
     }
 
     @media (max-width: 640px) {
@@ -601,7 +607,9 @@
 
       .projects { display: block; }
       .project {
-        display: block;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
         padding: 0;
         border: 0;
         border-radius: 0;
@@ -619,7 +627,12 @@
       .solves li::before { top: 8pt; }
       .solves strong { font-size: 10.5pt; }
       .solves p { font-size: 9.5pt; margin-top: 2pt; }
-      .shots { position: static; justify-content: flex-start; gap: 14pt; margin-top: 16pt; break-inside: avoid; }
+      .project-body { display: contents; }
+      .project-body > * { order: 2; }
+      .project-body > .project-label,
+      .project-body > h3,
+      .project-body > .project-summary { order: 0; }
+      .shots { position: static; order: 1; justify-content: flex-start; gap: 14pt; margin: 12pt 0 4pt; break-inside: avoid; }
       .phone { width: 120pt; max-width: none; padding: 5pt; border-radius: 22pt; box-shadow: none; }
       .phone:nth-child(2) { margin-top: 0; }
       .phone-screen { border-radius: 18pt; }
