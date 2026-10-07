@@ -557,7 +557,8 @@
     }
 
     /* 인쇄 / PDF 저장 */
-    @page { size: A4; margin: 14mm 12mm; }
+    /* @page로 여백을 지정하지 않는다: Safari는 머리글·바닥글을 켜면 @page 여백 기준으로
+       쪽을 나눈 뒤 실제로는 더 짧은 영역에 그려서 줄이 잘린다. 여백은 브라우저 기본값에 맡긴다. */
 
     @media print {
       :root, :root[data-theme="dark"] {
