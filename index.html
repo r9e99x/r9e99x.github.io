@@ -254,7 +254,8 @@
     .project {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 56px;
+      column-gap: 56px;
+      row-gap: 0;
       align-items: start;
       padding: 48px;
       background: var(--surface);
@@ -341,7 +342,9 @@
       background: var(--tag-bg);
       border: 1px solid var(--border-soft);
     }
-    .shots { position: sticky; top: 84px; }
+    .project-head { grid-column: 1; grid-row: 1; }
+    .project-details { grid-column: 1; grid-row: 2; }
+    .shots { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 84px; }
 
     /* 문제 해결 과정 */
     .solves { margin: 0; padding: 0; list-style: none; counter-reset: solve; }
@@ -525,13 +528,8 @@
 
     @media (max-width: 960px) {
       /* 좁은 화면: 제목 → 스크린샷 → 설명 순서로 배치 */
-      .project { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 40px; }
-      .project-body { display: contents; }
-      .project-body > * { order: 2; }
-      .project-body > .project-label,
-      .project-body > h3,
-      .project-body > .project-summary { order: 0; }
-      .shots { position: static; order: 1; margin: 28px 0 8px; }
+      .project { display: block; padding: 40px; }
+      .shots { position: static; margin: 28px 0 8px; }
     }
 
     @media (max-width: 640px) {
@@ -607,14 +605,12 @@
 
       .projects { display: block; }
       .project {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
+        display: block;
         padding: 0;
         border: 0;
         border-radius: 0;
       }
-      #projects, .project + .project { break-before: page; }
+      #projects, .project + .project { break-before: page; page-break-before: always; }
       .project h3 { font-size: 22pt; }
       .project-summary { font-size: 12pt; margin-top: 4pt; }
       .project-desc { margin-top: 8pt; }
@@ -627,12 +623,7 @@
       .solves li::before { top: 8pt; }
       .solves strong { font-size: 10.5pt; }
       .solves p { font-size: 9.5pt; margin-top: 2pt; }
-      .project-body { display: contents; }
-      .project-body > * { order: 2; }
-      .project-body > .project-label,
-      .project-body > h3,
-      .project-body > .project-summary { order: 0; }
-      .shots { position: static; order: 1; justify-content: flex-start; gap: 14pt; margin: 12pt 0 4pt; break-inside: avoid; }
+      .shots { position: static; justify-content: flex-start; gap: 14pt; margin: 12pt 0 4pt; break-inside: avoid; page-break-inside: avoid; }
       .phone { width: 120pt; max-width: none; padding: 5pt; border-radius: 22pt; box-shadow: none; }
       .phone:nth-child(2) { margin-top: 0; }
       .phone-screen { border-radius: 18pt; }
@@ -648,8 +639,13 @@
       .contact .btn { padding: 0; border: 0; background: none; color: var(--text); font-size: 10.5pt; }
       .contact .btn + .btn { margin-left: 12pt; }
 
-      .solves li, .bullets li, .about-item, .fact, .stack-row, .hero-grid { break-inside: avoid; }
-      h2, h3, h4 { break-after: avoid; }
+      /* 줄이나 항목이 페이지 경계에서 잘리지 않도록 (Safari는 page-break-* 표기를 사용) */
+      .solves li, .bullets li, .about-item, .fact, .stack-row, .hero-grid, .tags, p {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+      p, li { orphans: 3; widows: 3; }
       a { color: inherit; text-decoration: none; }
     }
   </style>
@@ -794,13 +790,29 @@
 
           <!-- Bloccode -->
           <article class="project">
-            <div class="project-body">
+            <div class="project-head">
               <p class="project-label">
                 <span class="badge">출시 준비 중</span>
                 <span>iOS · iPadOS · macOS · 개인 프로젝트</span>
               </p>
               <h3>Bloccode</h3>
               <p class="project-summary">아이소메트릭 2.5D 코드 블록 퍼즐 게임</p>
+            </div>
+
+            <div class="shots" role="group" aria-label="Bloccode 스크린샷">
+              <div class="phone has-shot">
+                <div class="phone-screen">
+                  <img src="images/bloccode-1.jpg" alt="Bloccode 게임 플레이 화면: 격자 맵과 코드 블록 팔레트" width="414" height="900">
+                </div>
+              </div>
+              <div class="phone has-shot">
+                <div class="phone-screen">
+                  <img src="images/bloccode-2.jpg" alt="Bloccode 챕터 맵 화면" width="414" height="900">
+                </div>
+              </div>
+            </div>
+
+            <div class="project-details">
               <p class="project-desc">
                 플레이어가 코드 블록을 조립해서 캐릭터를 맵 위에서 움직이게 하는 퍼즐 게임입니다.
                 스테이지를 풀어 가며 순차 실행·반복문·조건문·함수 개념을 자연스럽게 익히도록 설계했고,
@@ -881,29 +893,33 @@
               </div>
             </div>
 
-            <div class="shots" role="group" aria-label="Bloccode 스크린샷">
-              <div class="phone has-shot">
-                <div class="phone-screen">
-                  <img src="images/bloccode-1.jpg" alt="Bloccode 게임 플레이 화면: 격자 맵과 코드 블록 팔레트" width="414" height="900">
-                </div>
-              </div>
-              <div class="phone has-shot">
-                <div class="phone-screen">
-                  <img src="images/bloccode-2.jpg" alt="Bloccode 챕터 맵 화면" width="414" height="900">
-                </div>
-              </div>
-            </div>
           </article>
 
           <!-- AI Money -->
           <article class="project">
-            <div class="project-body">
+            <div class="project-head">
               <p class="project-label">
                 <span class="badge">2025.03 – 2025.10 · 약 7개월</span>
                 <span>iOS · 개인 프로젝트</span>
               </p>
               <h3>AI Money</h3>
               <p class="project-summary">개인 재무관리 iOS 앱</p>
+            </div>
+
+            <div class="shots" role="group" aria-label="AI Money 스크린샷">
+              <div class="phone has-shot">
+                <div class="phone-screen">
+                  <img src="images/ai-money-1.jpg" alt="AI Money 지출 분석 화면: 카테고리별 도넛 차트" width="414" height="900">
+                </div>
+              </div>
+              <div class="phone has-shot">
+                <div class="phone-screen">
+                  <img src="images/ai-money-2.jpg" alt="AI Money AI 분석 챗봇 화면" width="414" height="900">
+                </div>
+              </div>
+            </div>
+
+            <div class="project-details">
               <p class="project-desc">
                 캘린더로 지출을 기록하고 차트로 분석하는 가계부 앱입니다.
                 CreateML로 직접 학습시킨 텍스트 분류 모델을 사용해, 자연어로 입력한 질의를 분류하고
@@ -976,18 +992,6 @@
               </div>
             </div>
 
-            <div class="shots" role="group" aria-label="AI Money 스크린샷">
-              <div class="phone has-shot">
-                <div class="phone-screen">
-                  <img src="images/ai-money-1.jpg" alt="AI Money 지출 분석 화면: 카테고리별 도넛 차트" width="414" height="900">
-                </div>
-              </div>
-              <div class="phone has-shot">
-                <div class="phone-screen">
-                  <img src="images/ai-money-2.jpg" alt="AI Money AI 분석 챗봇 화면" width="414" height="900">
-                </div>
-              </div>
-            </div>
           </article>
 
         </div>
