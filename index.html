@@ -647,24 +647,24 @@
       .project h3 { font-size: 16pt; }
       .project-summary { font-size: 10pt; margin-top: 0; }
       .shots { position: static; float: right; gap: 10pt; margin: 0 0 10pt 20pt; }
-      .phone { width: 118pt; max-width: none; padding: 4pt; border-radius: 18pt; box-shadow: none; }
+      .phone { width: 104pt; max-width: none; padding: 4pt; border-radius: 16pt; box-shadow: none; }
       /* 주요 기능까지만 스크린샷 옆에 두고, 그 아래 블록은 스크린샷 밑에서 전체 폭으로 */
       .project-details > .project-block ~ .project-block { clear: both; }
       .phone:nth-child(2) { margin-top: 0; }
       .phone-screen { border-radius: 14pt; }
-      .project-desc { margin-top: 7pt; }
+      /* 각 블록을 제목 + 위쪽 가는 선으로 구분 (flow-root라 스크린샷 옆에서는 선도 스크린샷 앞에서 끝남) */
+      .project-desc, .project-block { display: flow-root; margin-top: 9pt; padding-top: 6pt; border-top: 0.75pt solid var(--border-soft); }
+      .project-desc::before { content: "간단 소개 및 기술"; display: block; margin-bottom: 2pt; font-size: 9.5pt; font-weight: 700; color: var(--accent); }
       .project .tags { margin-top: 4pt; }
-      .project-block { margin-top: 8pt; }
-      .project-block h4 { font-size: 9.5pt; font-weight: 700; color: var(--text); margin-bottom: 2pt; }
+      .project-block.print-hide { display: none; }
+      .project-block h4 { font-size: 9.5pt; font-weight: 700; color: var(--accent); margin-bottom: 2pt; }
       .bullets li { font-size: 9.5pt; padding-left: 10pt; }
       .bullets li + li { margin-top: 1.5pt; }
       .bullets li::before { left: 0; top: 0.65em; width: 3pt; height: 3pt; background: var(--text-secondary); }
       .solves li { padding: 2pt 0 2pt 14pt; border-top: 0; }
       .solves li::before { top: 2pt; width: auto; height: auto; background: none; border-radius: 0; font-size: 9.5pt; line-height: 1.45; font-weight: 700; text-align: left; }
       .solves strong { font-size: 9.5pt; }
-      .solves p { display: none; }
-      .solves li { padding: 1.5pt 0 1.5pt 14pt; }
-      .solves li::before { top: 1.5pt; }
+      .solves p { font-size: 9pt; margin-top: 0; }
 
       /* 자기소개: 라벨을 왼쪽에 걸어 두고 본문은 한 줄로 정렬.
          격자 안에서는 Safari가 항목을 쪽 사이로 쪼개므로 인쇄는 일반 흐름으로 */
