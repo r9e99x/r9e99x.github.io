@@ -575,8 +575,8 @@
         --surface: #ffffff;
         --text: #1d1d1f;
         --text-secondary: #515154;
-        --border: #d2d2d7;
-        --border-soft: #e0e0e5;
+        --border: #c7c7cc;
+        --border-soft: #d9d9de;
         --accent: #0066cc;
         --accent-solid: #0071e3;
         --accent-tint: #eef4fc;
@@ -585,70 +585,75 @@
         --phone-screen: #f5f5f7;
       }
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      body { font-size: 11pt; line-height: 1.55; }
+      body { font-size: 10pt; line-height: 1.5; }
       .container { max-width: none; padding: 0; }
+      .nav, .hero-actions, .project-actions, footer, .section-head p { display: none; }
+      code { font-size: 0.85em; padding: 0 3pt; }
 
-      .nav, .hero-actions, .project-actions, footer { display: none; }
+      /* 머리: 이름·소개·연락처 + 사진, 아래 굵은 선으로 구분 */
+      .hero { padding: 0 0 12pt; margin-bottom: 16pt; border-bottom: 1.5pt solid var(--text); }
+      .hero-grid { grid-template-columns: minmax(0, 1fr) auto; gap: 20pt; align-items: start; }
+      .hero-photo { order: 0; width: 80pt; border-radius: 8pt; }
+      .eyebrow { font-size: 9pt; margin-bottom: 2pt; }
+      .hero h1 { font-size: 26pt; }
+      .hero-lead { font-size: 10pt; line-height: 1.6; margin-top: 6pt; max-width: none; }
+      .hero-meta { margin-top: 6pt; font-size: 9pt; }
+      .hero-contact { margin-top: 3pt; gap: 3pt 14pt; font-size: 9pt; }
+      .hero-contact svg { width: 9pt; height: 9pt; }
 
-      .hero { padding: 0 0 22pt; }
-      .hero-grid { grid-template-columns: minmax(0, 1fr) auto; gap: 24pt; align-items: start; }
-      .hero-photo { order: 0; width: 96pt; border-radius: 10pt; }
-      .hero h1 { font-size: 30pt; }
-      .hero-lead { font-size: 12pt; margin-top: 10pt; max-width: none; }
-      .hero-meta { margin-top: 8pt; font-size: 10pt; }
+      /* 섹션: 작은 제목 + 얇은 구분선 */
+      .section, .section-compact { padding: 0 0 16pt !important; }
+      .section-head { margin-bottom: 6pt; }
+      .section-head h2 { font-size: 13pt; letter-spacing: -0.01em; }
 
-      .section, .section-compact { padding: 0 0 22pt !important; }
-      .section-head { margin-bottom: 12pt; }
-      .section-head h2 { font-size: 18pt; }
-      .section-head p { margin-top: 2pt; font-size: 10pt; }
+      .facts { gap: 12pt; padding-top: 7pt; }
+      .fact h3 { font-size: 8.5pt; margin-bottom: 1pt; }
+      .fact p { font-size: 10.5pt; }
+      .fact p + p { font-size: 9pt; margin-top: 1pt; }
+
+      .stack-row { grid-template-columns: 90pt minmax(0, 1fr); gap: 10pt; padding: 4pt 0; }
+      .stack-row dt { font-size: 9pt; }
+      .tags { gap: 4pt; }
+      .tags li { font-size: 8.5pt; padding: 1pt 6pt; border-radius: 4pt; }
+
+      /* 프로젝트: 새 쪽에서 시작, 스크린샷은 오른쪽에 작게 두고 글이 옆으로 흐름 */
+      #projects { break-before: page; page-break-before: always; }
+      .project + .project { margin-top: 22pt; padding-top: 16pt; border-top: 0.75pt solid var(--border); }
+      .projects { display: block; }
+      .project { display: block; padding: 0; border: 0; border-radius: 0; }
+      .project-label { margin-bottom: 3pt; font-size: 8.5pt; }
+      .badge { font-size: 8pt; padding: 1pt 7pt; }
+      .project h3 { font-size: 18pt; }
+      .project-summary { font-size: 10.5pt; margin-top: 1pt; }
+      .shots { position: static; float: right; gap: 7pt; margin: 2pt 0 8pt 16pt; }
+      .phone { width: 76pt; max-width: none; padding: 3pt; border-radius: 13pt; box-shadow: none; }
+      .phone:nth-child(2) { margin-top: 0; }
+      .phone-screen { border-radius: 10pt; }
+      .project-desc { margin-top: 8pt; }
+      .project .tags { margin-top: 7pt; }
+      .project-block { margin-top: 11pt; }
+      .project-block h4 { font-size: 9pt; margin-bottom: 3pt; }
+      .bullets li { font-size: 9.5pt; padding-left: 12pt; }
+      .bullets li + li { margin-top: 2pt; }
+      .bullets li::before { left: 1pt; }
+      .solves li { padding: 5pt 0 5pt 22pt; }
+      .solves li::before { top: 6pt; width: 15pt; height: 15pt; line-height: 15pt; font-size: 8pt; }
+      .solves strong { font-size: 9.5pt; }
+      .solves p { font-size: 9pt; margin-top: 1pt; }
 
       /* 격자 안에서는 Safari가 항목을 쪽 사이로 쪼개므로 인쇄는 일반 흐름으로 */
-      .about { display: block; padding-top: 12pt; }
+      .about { display: block; padding-top: 7pt; }
       .about-item { display: block; }
-      .about-item + .about-item { margin-top: 12pt; }
-      .about-item h3 { font-size: 11.5pt; margin-bottom: 4pt; }
+      .about-item + .about-item { margin-top: 9pt; }
+      .about-item h3 { font-size: 10.5pt; margin-bottom: 2pt; }
+      .about-label { display: inline; margin-right: 6pt; font-size: 8.5pt; }
       .about-item p { font-size: 9.5pt; }
-
-      .stack-row { grid-template-columns: 110pt minmax(0, 1fr); gap: 12pt; padding: 7pt 0; }
-      .stack-row dt { font-size: 10pt; }
-      .tags li { font-size: 9pt; padding: 2pt 7pt; }
-
-      .projects { display: block; }
-      .project {
-        display: block;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-      }
-      .project + .project { break-before: page; page-break-before: always; }
-      .project h3 { font-size: 22pt; }
-      .project-summary { font-size: 12pt; margin-top: 4pt; }
-      .project-desc { margin-top: 8pt; }
-      .project .tags { margin-top: 10pt; }
-      .project-block { margin-top: 14pt; }
-      .project-block h4 { font-size: 9.5pt; margin-bottom: 5pt; break-after: avoid; }
-      .bullets li { font-size: 10pt; }
-      .bullets li + li { margin-top: 3pt; }
-      .solves li { padding: 7pt 0 7pt 26pt; }
-      .solves li::before { top: 8pt; }
-      .solves strong { font-size: 10.5pt; }
-      .solves p { font-size: 9.5pt; margin-top: 2pt; }
-      .shots { position: static; justify-content: flex-start; gap: 14pt; margin: 12pt 0 4pt; break-inside: avoid; page-break-inside: avoid; }
-      .phone { width: 120pt; max-width: none; padding: 5pt; border-radius: 22pt; box-shadow: none; }
-      .phone:nth-child(2) { margin-top: 0; }
-      .phone-screen { border-radius: 18pt; }
-
-      .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12pt; }
-      .facts { padding-top: 12pt; }
-      .fact p { font-size: 12pt; }
-      .fact p + p { font-size: 10pt; }
       .prose { max-width: none; }
-      .prose p { font-size: 10.5pt; }
-      .prose p + p { margin-top: 6pt; }
-
+      .prose p { font-size: 9.5pt; }
+      .prose p + p { margin-top: 5pt; }
 
       /* 줄이나 항목이 페이지 경계에서 잘리지 않도록 (Safari는 page-break-* 표기를 사용) */
-      .solves li, .bullets li, .about-item, .fact, .stack-row, .hero-grid, .tags, p {
+      .solves li, .bullets li, .about-item, .fact, .stack-row, .hero-grid, .tags, .shots, p {
         break-inside: avoid;
         page-break-inside: avoid;
       }
@@ -656,12 +661,10 @@
       /* Safari는 break-after: avoid를 지키지 않아 소제목만 쪽 끝에 남는다.
          제목 상자를 아래로 늘려(뒤 내용과는 음수 여백으로 겹침) 뒤에 올 내용만큼의
          자리가 없으면 제목이 통째로 다음 쪽으로 넘어가게 한다. */
-      .project-block h4 { padding-bottom: 84pt; margin-bottom: -79pt; break-inside: avoid; page-break-inside: avoid; }
-      .section-head { padding-bottom: 132pt; margin-bottom: -120pt; break-inside: avoid; page-break-inside: avoid; }
-      /* "대표 프로젝트" 제목은 첫 프로젝트의 이름·스크린샷까지 함께 넘김 */
-      #projects .section-head { padding-bottom: 420pt; margin-bottom: -408pt; }
-      /* 프로젝트 이름과 스크린샷(약 275pt)을 같은 쪽에 */
-      .project-head { padding-bottom: 285pt; margin-bottom: -285pt; break-inside: avoid; page-break-inside: avoid; }
+      .project-block h4 { padding-bottom: 95pt; margin-bottom: -92pt; break-inside: avoid; page-break-inside: avoid; }
+      .section-head { padding-bottom: 90pt; margin-bottom: -84pt; break-inside: avoid; page-break-inside: avoid; }
+      /* 프로젝트 이름은 오른쪽 스크린샷(약 175pt)과 같은 쪽에 */
+      .project-head { padding-bottom: 190pt; margin-bottom: -190pt; break-inside: avoid; page-break-inside: avoid; }
       p, li { orphans: 3; widows: 3; }
       a { color: inherit; text-decoration: none; }
     }
