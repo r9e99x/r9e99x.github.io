@@ -631,6 +631,20 @@
       #education .section-head, #role .section-head, #skills .section-head { margin: 0; }
       #education h2, #role h2, #skills h2 { font-size: 10.5pt; }
       #education, #role, #skills { break-inside: avoid; page-break-inside: avoid; }
+      /* 첫 쪽은 내용이 적어 위에 몰리므로 여백·줄 간격을 넉넉히 해 쪽 전체를 쓰게 함 */
+      .hero { padding-bottom: 28pt; margin-bottom: 4pt; }
+      .hero h1 { font-size: 32pt; }
+      .hero-photo { width: 100pt; }
+      .hero-lead { font-size: 10.5pt; line-height: 1.8; margin-top: 12pt; }
+      .hero-meta { margin-top: 12pt; }
+      .hero-contact { margin-top: 4pt; }
+      #education, #role, #skills { padding: 26pt 0 28pt !important; line-height: 1.75; }
+      #education { border-top: 0; }
+      #education h2, #role h2, #skills h2 { font-size: 11pt; }
+      #education .fact p, #role .fact p { font-size: 10.5pt; }
+      #education .fact p + p, #role .fact p + p { font-size: 9.5pt; }
+      #skills .stack-row { padding: 5.5pt 0; }
+      #skills .stack-row dt, #skills .tags li { font-size: 9.5pt; }
       .facts { gap: 12pt; }
       .fact h3 { font-size: 8.5pt; margin-bottom: 0; }
       .fact p { font-size: 10pt; }
