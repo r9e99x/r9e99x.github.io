@@ -645,6 +645,15 @@
       #education .fact p + p, #role .fact p + p { font-size: 9.5pt; }
       #skills .stack-row { padding: 5.5pt 0; }
       #skills .stack-row dt, #skills .tags li { font-size: 9.5pt; }
+      /* 나머지 쪽도 아래가 비지 않게: AI Money 쪽(두 번째 프로젝트)과 마지막 쪽은 간격을 넓힘.
+         Bloccode 쪽은 이미 한 쪽이 꽉 차서 그대로 둠 */
+      .project + .project { line-height: 1.6; }
+      .project + .project .project-desc, .project + .project .project-block { margin-top: 14pt; padding-top: 8pt; }
+      .project + .project .solves li { padding: 3pt 0 3pt 14pt; }
+      #about, #motivation, #aspiration { line-height: 1.65; }
+      #about .about-item + .about-item { margin-top: 10pt; }
+      #motivation, #aspiration { padding-top: 14pt !important; }
+      #about, #motivation { padding-bottom: 14pt !important; }
       .facts { gap: 12pt; }
       .fact h3 { font-size: 8.5pt; margin-bottom: 0; }
       .fact p { font-size: 10pt; }
