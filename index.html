@@ -645,11 +645,11 @@
       #education .fact p + p, #role .fact p + p { font-size: 9.5pt; }
       #skills .stack-row { padding: 5.5pt 0; }
       #skills .stack-row dt, #skills .tags li { font-size: 9.5pt; }
-      /* 나머지 쪽도 아래가 비지 않게: AI Money 쪽(두 번째 프로젝트)과 마지막 쪽은 간격을 넓힘.
-         Bloccode 쪽은 이미 한 쪽이 꽉 차서 그대로 둠 */
-      .project + .project { line-height: 1.6; }
-      .project + .project .project-desc, .project + .project .project-block { margin-top: 14pt; padding-top: 8pt; }
-      .project + .project .solves li { padding: 3pt 0 3pt 14pt; }
+      /* 나머지 쪽도 아래가 비지 않게: 두 프로젝트 쪽과 마지막 쪽은 간격을 넓힘 (두 프로젝트는 같은 간격) */
+      .project { line-height: 1.6; }
+      .project .project-desc, .project .project-block { margin-top: 11pt; padding-top: 7pt; }
+      .project .solves li { padding: 3pt 0 3pt 14pt; }
+      .project .solves li::before { top: 3pt; line-height: 1.6; }
       #about, #motivation, #aspiration { line-height: 1.65; }
       #about .about-item + .about-item { margin-top: 10pt; }
       #motivation, #aspiration { padding-top: 14pt !important; }
@@ -670,7 +670,7 @@
       .project h3 { font-size: 16pt; }
       .project-summary { font-size: 10pt; margin-top: 0; }
       .shots { position: static; float: right; gap: 10pt; margin: 0 0 10pt 20pt; }
-      .phone { width: 104pt; max-width: none; padding: 4pt; border-radius: 16pt; box-shadow: none; }
+      .phone { width: 98pt; max-width: none; padding: 4pt; border-radius: 15pt; box-shadow: none; }
       /* 주요 기능까지만 스크린샷 옆에 두고, 그 아래 블록은 스크린샷 밑에서 전체 폭으로 */
       .project-details > .project-block ~ .project-block { clear: both; }
       .phone:nth-child(2) { margin-top: 0; }
