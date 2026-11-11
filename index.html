@@ -356,15 +356,6 @@
     .shots { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 84px; }
 
     /* 문제 해결 과정 */
-    .ai-note {
-      margin: -24px 0 32px;
-      padding: 14px 18px;
-      border-left: 3px solid var(--accent-solid);
-      background: var(--surface);
-      font-size: 15px;
-      color: var(--text);
-    }
-    .solves-note { margin-bottom: 8px; font-size: 14px; color: var(--text-secondary); }
     .solves { margin: 0; padding: 0; list-style: none; counter-reset: solve; }
     .solves li {
       position: relative;
@@ -655,10 +646,10 @@
       #skills .stack-row { padding: 5.5pt 0; }
       #skills .stack-row dt, #skills .tags li { font-size: 9.5pt; }
       /* 나머지 쪽도 아래가 비지 않게: 두 프로젝트 쪽과 마지막 쪽은 간격을 넓힘 (두 프로젝트는 같은 간격) */
-      .project { line-height: 1.5; }
-      .project .project-desc, .project .project-block { margin-top: 8pt; padding-top: 6pt; }
-      .project .solves li { padding: 2.5pt 0 2.5pt 14pt; }
-      .project .solves li::before { top: 3pt; line-height: 1.5; }
+      .project { line-height: 1.6; }
+      .project .project-desc, .project .project-block { margin-top: 11pt; padding-top: 7pt; }
+      .project .solves li { padding: 3pt 0 3pt 14pt; }
+      .project .solves li::before { top: 3pt; line-height: 1.6; }
       #about, #motivation, #aspiration { line-height: 1.65; }
       #about .about-item + .about-item { margin-top: 10pt; }
       #motivation, #aspiration { padding-top: 14pt !important; }
@@ -688,8 +679,6 @@
       .project-desc, .project-block { display: flow-root; margin-top: 9pt; padding-top: 6pt; border-top: 0.75pt solid var(--border-soft); }
       .project-desc::before { content: "간단 소개 및 기술"; display: block; margin-bottom: 2pt; font-size: 9.5pt; font-weight: 700; color: var(--accent); }
       .project .tags { margin-top: 4pt; }
-      .ai-note { margin: 0 0 8pt; padding: 4pt 8pt; font-size: 9pt; background: none; border-left-width: 2pt; }
-      .solves-note { margin: 0 0 2pt; font-size: 8.5pt; }
       .project-block.print-hide { display: none; }
       .project-block h4 { font-size: 9.5pt; font-weight: 700; color: var(--accent); margin-bottom: 2pt; }
       .bullets li { font-size: 9.5pt; padding-left: 10pt; }
@@ -766,7 +755,7 @@
         <p class="hero-lead">
           <strong>Swift로 구조를 고민하며 앱을 만드는 iOS 개발자입니다.</strong>
           기능이 동작하는 데서 멈추지 않고, 역할이 분명하게 나뉜 구조를 만드는 데 관심이 많습니다.
-          퍼즐 게임 Bloccode와 재무관리 앱 AI Money를 AI를 사용해 개발했으며,
+          퍼즐 게임 Bloccode와 재무관리 앱 AI Money를 직접 기획하고 개발했으며,
           장기적으로는 macOS/iOS 플랫폼·프레임워크 개발을 목표로 하고 있습니다.
         </p>
         <p class="hero-meta">서울</p>
@@ -814,7 +803,7 @@
           <div class="fact">
             <h3>활동</h3>
             <p>개인 프로젝트 중심</p>
-            <p>AI를 사용해 iOS 앱을 개발하며 활동하고 있습니다.</p>
+            <p>iOS 앱을 직접 기획하고 개발하며 활동하고 있습니다.</p>
           </div>
         </div>
       </div>
@@ -883,8 +872,8 @@
       <div class="container">
         <div class="section-head">
           <h2>대표 프로젝트</h2>
+          <p>직접 기획하고 개발한 앱입니다.</p>
         </div>
-        <p class="ai-note">두 프로젝트 모두 AI를 100% 사용해 만들었으며, 제가 직접 작성한 코드는 한 줄도 없습니다. 문제 해결 역시 AI를 사용해 진행했습니다.</p>
 
         <div class="projects">
 
@@ -961,7 +950,6 @@
 
               <div class="project-block">
                 <h4>문제 해결 과정</h4>
-                <p class="solves-note">아래 문제는 모두 AI를 사용해 원인을 찾고 해결했습니다.</p>
                 <ol class="solves">
                   <li>
                     <strong>챕터 해금 버그 → 메타데이터를 단일 원본으로 통합</strong>
@@ -1061,7 +1049,6 @@
 
               <div class="project-block">
                 <h4>문제 해결 과정</h4>
-                <p class="solves-note">아래 문제는 모두 AI를 사용해 원인을 찾고 해결했습니다.</p>
                 <ol class="solves">
                   <li>
                     <strong>SwiftData 동시성 문제 → <code>@ModelActor</code>로 데이터 접근 격리</strong>
@@ -1109,19 +1096,19 @@
 
         <div class="about">
           <div class="about-item">
-            <h3><span class="about-label">시작</span>AI와 함께 만들며 시작했습니다</h3>
+            <h3><span class="about-label">시작</span>직접 만들며 배웠습니다</h3>
             <p>
-              컴퓨터공학을 전공하며 iOS 개발자를 목표로 정했고, 2025년 3월 개인 재무관리 앱 AI Money를 AI를 사용해 만들면서 iOS 개발을 시작했습니다.
-              7개월 동안 SwiftUI, SwiftData, CoreML을 사용하는 앱을 AI로 만들었고,
-              이어서 SpriteKit 기반 코드 블록 퍼즐 게임 Bloccode도 같은 방식으로 시작했습니다.
+              컴퓨터공학을 전공하며 iOS 개발자를 목표로 정했고, 2025년 3월 개인 재무관리 앱 AI Money를 직접 기획하면서 iOS 개발을 본격적으로 시작했습니다.
+              7개월 동안 SwiftUI, SwiftData, CoreML을 실제 앱에 적용하며 기초를 다졌고,
+              이어서 SpriteKit 기반 코드 블록 퍼즐 게임 Bloccode를 시작했습니다.
             </p>
           </div>
           <div class="about-item">
-            <h3><span class="about-label">역할</span>코드는 100% AI로 작성했습니다</h3>
+            <h3><span class="about-label">역할</span>기획부터 테스트까지 맡았습니다</h3>
             <p>
-              두 프로젝트 모두 개인 프로젝트이며, 코드는 100% AI를 사용해 작성했습니다. 제가 직접 작성한 코드는 한 줄도 없습니다.
-              문제가 생겼을 때의 원인 분석과 해결도 AI를 사용해 진행했습니다.
-              Bloccode에서는 Claude Code로 멀티 에이전트 환경(XcodeBuildMCP, Apple 공식 Xcode MCP, Context7)을 구성했고, AI가 제안한 리팩토링을 항목별로 승인해 반영했습니다.
+              두 프로젝트 모두 개인 프로젝트로, 기획, 화면 설계, 아키텍처, 구현, 테스트를 혼자 진행했습니다.
+              AI Money에서는 학습 데이터를 직접 만들어 CreateML로 텍스트 분류 모델을 학습시켰고,
+              Bloccode에서는 10개 챕터 69개 스테이지의 커리큘럼 설계와 iPhone·iPad·Mac 멀티플랫폼 대응까지 직접 맡았습니다.
             </p>
           </div>
           <div class="about-item">
@@ -1137,7 +1124,7 @@
             <p>
               기능이 동작하는 것만큼, 그 기능이 어디에 있어야 하는지를 중요하게 생각합니다.
               Bloccode에서 챕터 메타데이터가 여러 화면에 흩어져 있어 해금 버그가 생겼을 때,
-              AI를 사용해 값을 하나씩 맞추는 대신 <code>ChapterCatalog</code> 한 곳에서만 정의하도록 구조를 바꿨습니다.
+              값을 하나씩 맞추는 대신 <code>ChapterCatalog</code> 한 곳에서만 정의하도록 구조를 바꿨습니다.
               덕분에 챕터를 5개에서 10개로 늘릴 때도 파일 하나만 수정하면 됐습니다.
               두 프로젝트 모두 MVVM과 서비스 계층 분리, 프로토콜 추상화, <code>@MainActor</code>·<code>@ModelActor</code> 격리로
               각 계층의 책임과 스레드 안전성을 분명히 했습니다.
@@ -1148,14 +1135,14 @@
             <p>
               문제가 사라진 것처럼 보여도 원인을 이해할 때까지 놓지 않는 편입니다.
               macOS에서만 블록 드래그가 동작하지 않았을 때, 처음에는 제스처 충돌로 판단해 우선순위를 올렸지만 해결되지 않았습니다.
-              그대로 넘기지 않고 AI를 사용해 다시 추적한 끝에, 마우스를 누르는 동안 RunLoop가 이벤트 트래킹 모드로 바뀌어 타이머가 멈춘다는 원인을 찾았습니다.
+              그대로 넘기지 않고 다시 추적한 끝에, 마우스를 누르는 동안 RunLoop가 이벤트 트래킹 모드로 바뀌어 타이머가 멈춘다는 원인을 찾았습니다.
             </p>
           </div>
           <div class="about-item">
             <h3><span class="about-label">경험</span>정한 원칙을 지킵니다</h3>
             <p>
               리팩토링은 UI/UX와 동작을 바꾸지 않는다는 조건을 먼저 정하고, Claude Code 멀티 에이전트 환경에서 항목별로 승인해 원자적 커밋 단위로 반영합니다.
-              손으로 확인하던 69개 스테이지의 정답 검증에 한계가 오자, AI를 사용해 게임 규칙을 옮긴 시뮬레이터와 자동 테스트를 만들어
+              손으로 확인하던 69개 스테이지의 정답 검증에 한계가 오자, 게임 규칙을 옮긴 시뮬레이터와 자동 테스트를 만들어
               데이터가 바뀔 때마다 기존 스테이지가 깨졌는지 바로 확인할 수 있게 했습니다.
             </p>
           </div>
